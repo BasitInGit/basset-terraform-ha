@@ -68,6 +68,7 @@ resource "aws_autoscaling_group" "basset_ha_asg" {
   # Health check settings
   health_check_type         = "EC2"
   health_check_grace_period = 300
+  target_group_arns         = [aws_lb_target_group.basset_ha_tg.arn]
 
 }
 
