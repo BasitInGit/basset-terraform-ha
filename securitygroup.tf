@@ -1,5 +1,5 @@
-resource "aws_security_group" "basset_ec2_sg" {
-  name        = "basset-ec2-sg"
+resource "aws_security_group" "basset_ha_sg" {
+  name        = "basset-ha-sg"
   description = "security group for bassset application"
   vpc_id      = var.vpc_id
 }
@@ -11,7 +11,7 @@ resource "aws_security_group_rule" "basset_ec2_ssh" {
   to_port           = 22
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.basset_ec2_sg.id
+  security_group_id = aws_security_group.basset_ha_sg.id
 }
 
 resource "aws_security_group_rule" "basset_ec2_http" {
@@ -21,7 +21,7 @@ resource "aws_security_group_rule" "basset_ec2_http" {
   to_port           = 80
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.basset_ec2_sg.id
+  security_group_id = aws_security_group.basset_ha_sg.id
 }
 
 resource "aws_security_group_rule" "basset_ec2_outbound" {
@@ -31,5 +31,5 @@ resource "aws_security_group_rule" "basset_ec2_outbound" {
   to_port           = 0
   protocol          = "-1"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.basset_ec2_sg.id
+  security_group_id = aws_security_group.basset_ha_sg.id
 }

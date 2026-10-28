@@ -12,7 +12,7 @@ resource "aws_launch_template" "basset_app_ha" {
   # Network Configuration
   network_interfaces {
     associate_public_ip_address = true
-    security_groups             = [aws_security_group.basset_ec2_sg.id]
+    security_groups             = [aws_security_group.basset_ha_sg.id]
   }
 
   # Storage Configuration (EBS Volumes)

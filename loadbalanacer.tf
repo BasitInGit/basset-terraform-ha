@@ -2,7 +2,7 @@ resource "aws_lb" "basset_ha_lb" {
   name                       = "basset-ha-lb"
   internal                   = false
   load_balancer_type         = "application"
-  security_groups            = [aws_security_group.basset_ec2_sg.id]
+  security_groups            = [aws_security_group.basset_ha_sg.id]
   subnets                    = var.subnet_ids
   enable_deletion_protection = false
   tags = {
